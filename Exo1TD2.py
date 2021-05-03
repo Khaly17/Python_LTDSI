@@ -122,7 +122,26 @@ verlan1("LICENCE L3 TDSI")
 #============================================
 
 def Authentification():
-    addresse_institutionnel = input("Entrer ton addresse institutionnel")
+
+    addresse_institutionnel = input("Entrer ton addresse institutionnel : ")
+    while not addresse_institutionnel.endswith("@ucad.edu.sn"):
+        addresse_institutionnel = input("Entrer ton addresse institutionnel : ")
+    print(addresse_institutionnel)
+
+    mot_de_passe = input("Entrez un mot de passe : ")
+    alp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    alp1 = alp + alp.lower()
+    taille = len(mot_de_passe)
+    assertion = True
+    while assertion:
+        mot_de_passe = input("Entrez un mot de passe : ")
+        if any(c.isdigit() for c in mot_de_passe) == True:
+            if len(mot_de_passe) >= 5 and len(mot_de_passe) <= 10:
+                for el in range(len(alp1)):
+                    if alp1[el] in mot_de_passe:
+                        print("mot de passe fort")
+                        assertion = False
+Authentification()
 
 
 
